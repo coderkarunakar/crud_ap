@@ -1,0 +1,3 @@
+crud operation using mysql and nodejs ,get ,put,post,delete operation
+#fetching data by using id ,and fetching data of the entire table
+#2library i.e express and mysql
