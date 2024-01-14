@@ -50,11 +50,38 @@ app.post('/post',(req,res)=>{
 
 })
 
-//starting the server
+
+
+//query to fetch the data from our mysql database
+//we will be using get function and we will be fetch the data,and specifing the path,and a req,res call back function
+app.get("/fetch",(req,res)=>{
+    //specifying the query,for that we will be using connection variable name
+    //this query is an function,and inside paranthesis we need to write query which was written inside our mysql table,and it will also have a call back function
+    con.query("select * from mytable",function(err,result,fields){
+        //here we will be using error and fields
+        if(err){
+            console.log(err)
+        }else{
+            //by this below line we will be getting output inside the postman
+            res.send(result)
+            //by this we will be getting output inside the console terminal
+            // console.log(result)
+
+            //with the below one help we will be geeting output in the form of list
+            // console.log(JSON.parse(JSON.stringify(result)))
+
+            //inorder to access it individually
+            // var r = JSON.parse(JSON.stringify(result))
+            // console.log(r[0])
+            // console.log(r[1].name)
+        }
+    })
+})
+
 app.listen(3000,(err)=>{
     if(err){
-        console.log(err);
+        console.log(err)
     }else{
         console.log("on port 3000");
-    }
+    }  
 })
